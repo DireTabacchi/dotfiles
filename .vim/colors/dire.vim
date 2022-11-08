@@ -24,8 +24,11 @@ let s:dr = {}
 
 " fill the dict with colors
 
+" TODO: update xterm-256 colors
 let s:dr.bg = ['#1d1a1a', 234]
 let s:dr.fg = ['#f4dad0', 224]
+" Used with bright bg text, i.e. TODO
+let s:dr.contrast_fg = ['#213766', 234]
 
 let s:dr.dark_black 	= ['#2d2a2a', 234]
 let s:dr.dark_red 		= ['#932000', 88]
@@ -35,7 +38,7 @@ let s:dr.dark_blue		= ['#1446a0', 25]
 let s:dr.dark_magenta	= ['#990278', 97]
 let s:dr.dark_cyan		= ['#0f8759', 23]
 let s:dr.dark_white		= ['#756964', 95]
-let s:dr.dark_orange	= ['#914423', 130]
+let s:dr.dark_orange	= ['#a23f00', 130]
 
 let s:dr.bright_black 	= ['#423838', 59]
 let s:dr.bright_red 	= ['#ff3801', 160]
@@ -45,7 +48,8 @@ let s:dr.bright_blue	= ['#1c66ed', 27]
 let s:dr.bright_magenta	= ['#cc02a0', 133]
 let s:dr.bright_cyan	= ['#16c783', 71]
 let s:dr.bright_white	= ['#f4dad0', 224]
-let s:dr.bright_orange	= ['#b8562c', 166]
+"let s:dr.bright_orange	= ['#f6923c', 166]
+let s:dr.bright_orange	= ['#f05c00', 166]
 
 " }}}
 " Setup Emphasis: {{{
@@ -66,6 +70,7 @@ let s:none	 = ['NONE', 'NONE']
 
 let s:bg = s:dr.bg
 let s:fg = s:dr.fg
+let s:contrast_fg = s:dr.contrast_fg
 let s:black 	= [ s:dr.dark_black, s:dr.bright_black ]
 let s:red 		= [ s:dr.dark_red, s:dr.bright_red ]
 let s:green 	= [ s:dr.dark_green, s:dr.bright_green ]
@@ -135,7 +140,7 @@ hi! link CursorColumn CursorLine
 " TODO: TabLine
 
 " Match paired brackets under the cursor
-call s:HL('MatchParen', s:none, s:white[0], s:bold)
+call s:HL('MatchParen', s:contrast_fg, s:white[0], s:bold)
 
 " Highlighted screen columns
 call s:HL('ColorColumn', s:none, s:black[1])
@@ -236,7 +241,7 @@ call s:HL('Underlined', s:cyan[1], s:none, s:underline)
 
 call s:HL('Error', s:white[1], s:red[1], s:bold)
 
-call s:HL('Todo', s:red[0], s:yellow[1], s:bold)
+call s:HL('Todo', s:contrast_fg, s:yellow[1], s:bold)
 
 " }}}
 
@@ -247,5 +252,18 @@ call s:HL('hsDelimiter', s:orange[0])
 " call s:HL('ConId', s:green[1])
 " call s:HL('VarId', s:cyan[1])
 call s:HL('hsVarSym', s:magenta[1])
+
+" }}}
+" Rust: {{{
+
+call s:HL('rustIdentifier', s:green[1])
+call s:HL('rustStructure', s:blue[1])
+call s:HL('rustFuncCall', s:blue[0])
+call s:HL('rustOperator', s:yellow[0])
+"call s:HL('rustPubScope', s:orange[0])
+"call s:HL('rustExternCrateString', s:yellow[0])
+call s:HL('rustDerive', s:yellow[1])
+"call s:HL('rustCommentBlock', s:yellow[0])
+"call s:HL('rustGenericRegion', s:green[1])
 
 " }}}
