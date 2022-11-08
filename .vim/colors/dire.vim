@@ -17,8 +17,6 @@ endif
 let g:colors_name="dire"
 
 " }}}
-"
-
 " Palette: {{{
 
 " setup palette dictionary
@@ -116,8 +114,8 @@ endfunction
 
 
 " }}}
-" Begin Colorscheme -------------------------------------------------
 
+" Begin Colorscheme -------------------------------------------------
 " General UI: {{{
 
 " Normal text
@@ -239,5 +237,15 @@ call s:HL('Underlined', s:cyan[1], s:none, s:underline)
 call s:HL('Error', s:white[1], s:red[1], s:bold)
 
 call s:HL('Todo', s:red[0], s:yellow[1], s:bold)
+
+" }}}
+
+" Language Specific
+" Haskell: {{{
+
+call s:HL('hsDelimiter', s:orange[0])
+" call s:HL('ConId', s:green[1])
+" call s:HL('VarId', s:cyan[1])
+call s:HL('hsVarSym', s:magenta[1])
 
 " }}}
