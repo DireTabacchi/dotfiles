@@ -189,7 +189,6 @@ hi! link SignColumn Folded
 
 " }}}
 " Cursor: {{{
-
 " Character under curor
 call s:HL('Cursor', s:none, s:none, s:inverse)
 " language-mapping cursor
@@ -265,5 +264,44 @@ call s:HL('rustOperator', s:yellow[0])
 call s:HL('rustDerive', s:yellow[1])
 "call s:HL('rustCommentBlock', s:yellow[0])
 "call s:HL('rustGenericRegion', s:green[1])
+
+" }}}
+" Markdown: {{{
+
+call s:HL('markdownH1', s:red[0], s:none, s:bold)
+call s:HL('markdownH2', s:orange[1], s:none, s:bold)
+call s:HL('markdownH3', s:yellow[0], s:none, s:bold)
+call s:HL('markdownH4', s:green[0], s:none, s:bold)
+call s:HL('markdownH5', s:blue[0], s:none, s:bold)
+call s:HL('markdownH6', s:magenta[1], s:none, s:bold)
+
+call s:HL('markdownBlockQuote',s:green[1], s:none, s:italic)
+call s:HL('markdownCodeBlock', s:blue[0])
+
+call s:HL('markdownListMarker', s:green[1])
+call s:HL('markdownRule', s:yellow[1])
+
+call s:HL('markdownFootnote', s:cyan[1])
+call s:HL('markdownFootnoteDefinition', s:green[1])
+
+call s:HL('markdownLinkText', s:cyan[1], s:none, s:underline)
+
+" Don't work? Is this Heading IDs?
+"call s:HL('markdownIdDeclaration', s:cyan[0], s:none)
+"call s:HL('markdownId', s:orange[1])
+
+call s:HL('markdownUrl', s:blue[1], s:none)
+hi! link markdownUrlTitle String
+hi! link markdownUrlTitleDelimiter markdownUrlTitle
+
+call s:HL('markdownItalic', s:fg, s:none, s:italic)
+call s:HL('markdownItalicDelimiter', s:white[0])
+call s:HL('markdownBold', s:fg, s:none, s:bold)
+hi! link markdownBoldDelimiter markdownItalicDelimiter
+call s:HL('markdownBoldItalic', s:fg, s:none, s:bold . s:italic)
+hi! link markdownBoldItalicDelimiter markdownItalicDelimiter
+call s:HL('markdownStrike', s:black[1])
+hi! link markdownStrikeDelimiter markdownItalicDelimiter
+call s:HL('markdownCodeDelimiter', s:blue[1])
 
 " }}}

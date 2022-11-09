@@ -73,6 +73,7 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "o", lazy.spawn('obsidian'), desc="Launch the Obsidian Markdown Editor")
 ]
 
 def init_group_names():
@@ -155,8 +156,35 @@ widget_defaults = dict(
     font="hermit",
     fontsize=14,
     padding=3,
-    foreground = "EBDBB2",
+    foreground = "f4dad0",
 )
+
+# colors = dict(
+# 'fg': 'f4dad0',
+# # Foreground for bright background
+# 'c_fg': '213766',
+# 'bg': '1d1a1a',
+# 'bg2': '232222',
+# 'black': '2d2a2a',
+# 'l_black': '423838',
+# 'red': '932000',
+# 'l_red': 'ff3801',
+# 'green': '017b2e',
+# 'l_green': '02c74a',
+# 'yellow': 'a68114',
+# 'l_yellow': 'f2bd1d',
+# 'blue': '1446a0',
+# 'l_blue': '1c66ed',
+# 'magenta': '990278',
+# 'l_magenta': 'cc02a0',
+# 'cyan': '0f8759',
+# 'l_cyan': '16c783',
+# 'white': '756964',
+# 'l_white': 'f4dad0'
+# 'orange': 'a23f00',
+# 'l_orange': 'f05c00',
+# )
+
 extension_defaults = widget_defaults.copy()
 
 screens = [
@@ -164,77 +192,77 @@ screens = [
         top=bar.Bar(
             [
                 widget.CurrentLayoutIcon(
-                    background = "458588",
-                    foreground = "1D2021",
+                    background = "1446a0",
+                    foreground = "2d2a2a",
                 ),
                 widget.CurrentLayout(
-                    background = "458588",
-                    foreground = "1D2021",
+                    background = "1446a0",
+                    foreground = "2d2a2a",
                 ),
                 widget.Sep(
-                    foreground = "D65D0E",
+                    foreground = "a23f00",
                     linewidth = 2,
                     size_percent = 70,
                 ),
                 widget.GroupBox(
-                    active = "458588",
-                    inactive = "928374",
-                    highlight_color = ["31302F"],
+                    active = "1446a0",
+                    inactive = "756964",
+                    highlight_color = ["2d2a2a"],
                     highlight_method = "line",
-                    this_screen_border = "D65D0E",
-                    this_current_screen_border = "D65D0E",
+                    this_screen_border = "f05c00",
+                    this_current_screen_border = "f05c00",
                     urgent_alert_method = "block",
-                    urgent_border = "CC241D",
-                    urgent_text = "EBDBB2",
+                    urgent_border = "ff3801",
+                    urgent_text = "f4dad0",
                 ),
                 widget.Sep(
-                    foreground = "D65D0E",
+                    foreground = "a23f00",
                     linewidth = 2,
                     size_percent = 70,
                 ),
                 widget.WindowName(),
                 widget.Sep(
-                    background = "1D2021",
-                    foreground = "D65D0E",
+                    background = "232222",
+                    foreground = "a23f00",
                     linewidth = 2,
                     #padding = 0,
                     size_percent = 70,
                 ),
                 widget.Prompt(),
                 widget.Sep(
-                    background = "B16286",
-                    foreground = "1D2021",
+                    background = "990278",
+                    foreground = "232222",
                     linewidth = 4,
                     padding = 0,
                     size_percent = 70,
                 ),
                 widget.Net(
-                    background = "B16286",
-                    foreground = "1D2021",
+                    background = "990278",
+                    foreground = "1d1a1a",
                     format = "{up} \u2191/\u2193 {down} | \u21C5 {total}",
                     interface = "wlp1s0",
                 ),
                 widget.Sep(
-                    background = "D79921",
-                    foreground = "1D2021",
+                    background = "f2bd1d",
+                    foreground = "232222",
                     linewidth = 4,
                     padding = 0,
                     size_percent = 70,
                 ),
                 widget.Battery(
-                    background = "D79921",
+                    background = "f2bd1d",
                     charge_char = "+",
                     discharge_char = "-",
                     empty_char = "X",
-                    foreground = "1D2021",
-                    low_background = "CC241D",
-                    low_foreground = "EBDBB2",
+                    foreground = "213766",
+                    low_background = "932000",
+                    low_foreground = "f4dad0",
                     low_percentage = 0.2,
                     update_interval = 1,
                 ),
                 widget.Sep(
-                    background = "689D6A",
-                    foreground = "1D2021",
+                    background = "16c783",
+                    foreground = "232222",
                     linewidth = 4,
                     padding = 0,
                     size_percent = 70,
@@ -242,30 +270,28 @@ screens = [
                # # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                # # widget.StatusNotifier(),
                 widget.Clock(
-                    background = "689D6A",
+                    background = "16c783",
                     #font = "hermit bold",
-                    foreground = "1D2021",
+                    foreground = "213766",
                     format="%Y-%m-%d %a %H:%M"
                 ),
                 widget.Sep(
-                    background = "CC241D",
-                    foreground = "1D2021",
+                    background = "932000",
+                    foreground = "232222",
                     linewidth = 4,
                     padding = 0,
                     size_percent = 70,
                 ),
                 widget.QuickExit(
-                    background = "CC241D",
+                    background = "932000",
                 ),
             ],
             35,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-            background = "1D2021",
+            background = "232222",
 
         ),
-        wallpaper = "/home/nate/Pictures/wallpapers/gray_image3",
-        wallpaper_mode = "fill",
+        wallpaper = "/home/nate/Pictures/wallpapers/dwarf_fortress_steam_banner.png",
+        wallpaper_mode = "stretch",
     ),
 ]
 
