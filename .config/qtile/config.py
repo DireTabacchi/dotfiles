@@ -65,24 +65,33 @@ keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "f", lazy.spawn(browser), desc="Launch the Internet browser"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "o", lazy.spawn('obsidian'), desc="Launch the Obsidian Markdown Editor")
+    # Open applications
+    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod], "f", lazy.spawn(browser), desc="Launch the Internet browser"),
+    Key([mod], "o", lazy.spawn('obsidian'), desc="Launch the Obsidian Markdown Editor"),
+    Key([mod], "e", lazy.spawn('thunderbird'), desc="Launch the Thunderbird Email Client"),
+    Key([mod], "c", lazy.spawn('code'), desc="Launch Code"),
+
+    # Switch between keyboards maps
+    Key([mod, "shift"], "space", lazy.widget["keyboardlayout"].next_keyboard(), desc="Next Keyboard Layout"),
 ]
 
+# Groups/topbar
 def init_group_names():
     return [
         ("WEB", {'layout': 'max'}),
         ("DEV", {'layout': 'max'}),
+        ("GMNG", {'layout': 'max'}),
         ("WRT", {'layout': 'max'}),
-        ("SYS", {'layout': 'max'}),
-        ("EML", {'layout': 'max'})]
+        ("READ", {'layout': 'max'}),
+        ("EML", {'layout': 'max'}),
+        ("SYS", {'layout': 'max'})]
 
 def init_groups():
     return [Group(name, **kwargs) for name, kwargs in group_names]
@@ -131,20 +140,20 @@ layouts = [
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadTall(
-        align = layout.MonadTall._left,
-        border_focus = "D65D0E",
-        border_normal = "0D1011",
-        border_width=2,
-        margin = 2,
-        ratio = 0.6,
-    ),
-    layout.MonadWide(
-        border_focus = "D65D0E",
-        border_normal = "0D1011",
-        border_width=2,
-        margin = 2,
-    ),
+    #layout.MonadTall(
+    #    align = layout.MonadTall._left,
+    #    border_focus = "D65D0E",
+    #    border_normal = "0D1011",
+    #    border_width=2,
+    #    margin = 2,
+    #    ratio = 0.6,
+    #),
+    #layout.MonadWide(
+    #    border_focus = "D65D0E",
+    #    border_normal = "0D1011",
+    #    border_width=2,
+    #    margin = 2,
+    #),
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
@@ -195,10 +204,10 @@ screens = [
                     background = "1446a0",
                     foreground = "2d2a2a",
                 ),
-                widget.CurrentLayout(
-                    background = "1446a0",
-                    foreground = "2d2a2a",
-                ),
+                #widget.CurrentLayout(
+                #    background = "1446a0",
+                #    foreground = "2d2a2a",
+                #),
                 widget.Sep(
                     foreground = "a23f00",
                     linewidth = 2,
@@ -240,7 +249,7 @@ screens = [
                     background = "990278",
                     foreground = "1d1a1a",
                     format = "{up} \u2191/\u2193 {down} | \u21C5 {total}",
-                    interface = "wlp1s0",
+                    interface = "wlan0",
                 ),
                 widget.Sep(
                     background = "f2bd1d",
@@ -276,6 +285,18 @@ screens = [
                     format="%Y-%m-%d %a %H:%M"
                 ),
                 widget.Sep(
+                    background = "1446a0",
+                    foreground = "232222",
+                    linewidth = 4,
+                    padding = 0,
+                    size_percent = 70,
+                ),
+                widget.KeyboardLayout(
+                    background = "1446a0",
+                    configured_keyboards = ['us colemak', 'pl'],
+                    option = 'caps:capslock',
+                ),
+                widget.Sep(
                     background = "932000",
                     foreground = "232222",
                     linewidth = 4,
@@ -288,7 +309,6 @@ screens = [
             ],
             35,
             background = "232222",
-
         ),
         wallpaper = "/home/nate/Pictures/wallpapers/dwarf_fortress_steam_banner.png",
         wallpaper_mode = "stretch",

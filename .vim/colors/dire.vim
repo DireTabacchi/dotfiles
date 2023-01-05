@@ -25,31 +25,31 @@ let s:dr = {}
 " fill the dict with colors
 
 " TODO: update xterm-256 colors
-let s:dr.bg = ['#1d1a1a', 234]
+let s:dr.bg = ['#140d0d', 16]
 let s:dr.fg = ['#f4dad0', 224]
-" Used with bright bg text, i.e. TODO
-let s:dr.contrast_fg = ['#213766', 234]
+" Used with bright bg text, i.e. TODO tags
+let s:dr.contrast_fg = ['#213766', 17]
 
 let s:dr.dark_black 	= ['#2d2a2a', 234]
 let s:dr.dark_red 		= ['#932000', 88]
-let s:dr.dark_green 	= ['#017b2e', 58]
-let s:dr.dark_yellow	= ['#a68114', 94]
+let s:dr.dark_green 	= ['#017b2e', 28]
+let s:dr.dark_yellow	= ['#a68114', 136]
 let s:dr.dark_blue		= ['#1446a0', 25]
-let s:dr.dark_magenta	= ['#990278', 97]
-let s:dr.dark_cyan		= ['#0f8759', 23]
+let s:dr.dark_magenta	= ['#990278', 90]
+let s:dr.dark_cyan		= ['#0f8759', 29]
 let s:dr.dark_white		= ['#756964', 95]
 let s:dr.dark_orange	= ['#a23f00', 130]
 
 let s:dr.bright_black 	= ['#423838', 59]
-let s:dr.bright_red 	= ['#ff3801', 160]
-let s:dr.bright_green 	= ['#02c74a', 107]
+let s:dr.bright_red 	= ['#ff3801', 196]
+let s:dr.bright_green 	= ['#02c74a', 41]
 let s:dr.bright_yellow	= ['#f2bd1d', 214]
 let s:dr.bright_blue	= ['#1c66ed', 27]
-let s:dr.bright_magenta	= ['#cc02a0', 133]
-let s:dr.bright_cyan	= ['#16c783', 71]
+let s:dr.bright_magenta	= ['#cc02a0', 163]
+let s:dr.bright_cyan	= ['#16c783', 42]
 let s:dr.bright_white	= ['#f4dad0', 224]
 "let s:dr.bright_orange	= ['#f6923c', 166]
-let s:dr.bright_orange	= ['#f05c00', 166]
+let s:dr.bright_orange	= ['#f05c00', 202]
 
 " }}}
 " Setup Emphasis: {{{
@@ -179,6 +179,13 @@ call s:HL('WarningMsg', s:red[1], s:none, s:bold . s:italic)
 call s:HL('EndOfBuffer', s:green[0], s:none)
 
 " }}}
+" Popup Menu: {{{
+call s:HL('Pmenu', s:orange[1], s:black[1])
+call s:HL('PmenuSel', s:white[1], s:orange[0])
+call s:HL('PmenuSbar', s:white[0], s:bg)
+call s:HL('PmenuThumb', s:white[1], s:black[1])
+
+" }}}
 " Gutter: {{{
 
 call s:HL('LineNr', s:white[0], s:black[0])
@@ -215,7 +222,7 @@ call s:HL('Statement', s:red[0])
 call s:HL('Conditional', s:red[1])
 call s:HL('Repeat', s:red[1])
 call s:HL('Label', s:red[1])
-call s:HL('Operator' , s:white[1])
+call s:HL('Operator' , s:yellow[0])
 call s:HL('Keyword', s:red[1])
 
 " Generic Pre-processors
@@ -303,5 +310,10 @@ hi! link markdownBoldItalicDelimiter markdownItalicDelimiter
 call s:HL('markdownStrike', s:black[1])
 hi! link markdownStrikeDelimiter markdownItalicDelimiter
 call s:HL('markdownCodeDelimiter', s:blue[1])
+
+" }}}
+" CandCpp: {{{
+
+"call s:HL()
 
 " }}}
