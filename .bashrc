@@ -1,7 +1,7 @@
 # /==================================================================\
 # bashrc
 # Author: Nathaniel Tabacchi
-# Last Change: 2022 11 08
+# Last Change: 2023 01 24
 #
 # \==================================================================/
 #
@@ -12,11 +12,13 @@
 [[ $- != *i* ]] && return
 
 alias vim='nvim'
+alias grep='grep --color'
+alias hx='helix'
 alias ls='ls --color=auto'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
 alias doomrl='cd ~/games/DoomRL/doomrl-linux-x64-0997-lq/'
 
-PS1='\[\e[0m\][\[\e[0;34m\]\W\[\e[0m\]]\[\e[0;36m\]\$\[\e[0m\] '
+PS1='\[\e[0m\][\[\e[0;34m\]\W\[\e[0m\]]\[\e[0;33m\] --,^^,*>\[\e[0m\] '
 
 . "$HOME/.cargo/env"
 

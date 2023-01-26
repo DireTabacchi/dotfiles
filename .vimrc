@@ -18,15 +18,16 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
-Plug 'simrat39/rust-tools.nvim'
+" Until simrat39/rust-tools.nvim is fixed
+Plug 'kdarkhan/rust-tools.nvim'
+"Plug 'simrat39/rust-tools.nvim'
 Plug 'ray-x/lsp_signature.nvim'
 " ------- Syntax ============================
 Plug 'ziglang/zig.vim'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'frazrepo/vim-rainbow'
+Plug 'dag/vim-fish'
 " ------- Other =============================
-" Plug 'chrisbra/ChangesPlugin'
 Plug 'fladson/vim-kitty'
 Plug 'ThePrimeagen/vim-be-good'
 call plug#end()
@@ -42,10 +43,11 @@ set shiftwidth=4
 set expandtab
 set showcmd
 set autoindent
+set smartindent
 set laststatus=2
 set termguicolors
 set colorcolumn=101
-colorscheme dire
+colorscheme midnight_sea_dragon
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
@@ -58,7 +60,7 @@ let g:rustfmt_command='/home/nate/.cargo/bin/rustfmt'
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 
-au FileType c,cpp call rainbow#load()
+"au FileType c,cpp call rainbow#load()
 
 lua <<EOF
 vim.opt.completeopt = "menu,menuone,noinsert,noselect"
@@ -81,7 +83,6 @@ cmp.setup({
     sources = {
         { name = "nvim_lsp" },
         { name = "vsnip" },
-        { name = "path" },
         { name = "nvim-lsp-signature-help" },
     }, {
         { name = "buffer" },
